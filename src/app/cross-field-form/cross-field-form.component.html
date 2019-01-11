@@ -1,0 +1,149 @@
+<div class="purchaseform-container">
+  <div class="right-pane pane">
+    <div class="mobile-logo">
+      <img src="assets/img/logo-white.svg" alt="ng-colombia logo" />
+    </div>
+    <div class="welcome-text">
+      <p>Quite welcome to this awesome form<br />Please fill your information in the required fields.</p>
+    </div>
+    <div class="form-container">
+      <form [formGroup]="attendantInformationForm" (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="attendantInformation.customerName"
+              name="fullName"
+              matInput
+              placeholder="FULL NAME"
+              formControlName="fullName"
+            />
+            <mat-error
+              *ngIf="
+                attendantInformationForm.get('fullName').hasError('required')
+              "
+            >
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="attendantInformation.email"
+              name="email"
+              matInput
+              placeholder="EMAIL"
+              formControlName="email"
+            />
+            <mat-error
+              *ngIf="attendantInformationForm.get('email').hasError('required')"
+            >
+              Email address is <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="attendantInformationForm.get('email').hasError('pattern')"
+            >
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="attendantInformation.confirmationEmail"
+              name="emailConfirmation"
+              matInput
+              placeholder="EMAIL CONFIRMATION"
+              formControlName="emailConfirmation"
+            />
+            <mat-error
+              *ngIf="
+                attendantInformationForm
+                  .get('emailConfirmation')
+                  .hasError('required')
+              "
+            >
+              Email address confirmation is <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="
+                attendantInformationForm
+                  .get('emailConfirmation')
+                  .hasError('pattern')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error
+              *ngIf="
+                attendantInformationForm
+                  .get('emailConfirmation')
+                  .hasError('mismatchedEmails')
+              "
+            >
+              Email addresses <strong>must match</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="attendantInformation.customerId"
+              name="idNumber"
+              matInput
+              placeholder="IDENTIFICATION"
+              formControlName="idNumber"
+            />
+            <mat-error
+              *ngIf="
+                attendantInformationForm.get('idNumber').hasError('required')
+              "
+            >
+              Identification is <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="
+                attendantInformationForm.get('idNumber').hasError('pattern')
+              "
+            >
+              Wrong format:
+              <strong>only alphanumeric characters allowed</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="attendantInformation.customerPhoneNumber"
+              name="phone"
+              type="tel"
+              matInput
+              placeholder="PHONE"
+              formControlName="phone"
+            />
+            <mat-error
+              *ngIf="attendantInformationForm.get('phone').hasError('required')"
+            >
+              Phone number is <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="attendantInformationForm.get('phone').hasError('pattern')"
+            >
+              Wrong format: <strong>only numbers allowed</strong> and
+              <strong>minimum length is 7</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <button
+          type="submit"
+          [disabled]=" loading || !!checkoutInformation"
+          class="btn"
+        >
+          PURCHASE
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
