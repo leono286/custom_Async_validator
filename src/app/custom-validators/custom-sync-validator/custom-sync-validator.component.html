@@ -1,0 +1,33 @@
+<div class="purchaseform-container">
+    <div class="right-pane pane">
+      <div class="welcome-text">
+       <h2><strong>Sync</strong> custom validator example</h2>
+      </div>
+      <div class="form-container">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              name="answer"
+              matInput
+              placeholder="Yes or No"
+              [formControl]="yesNoInput"
+            />
+            <!-- <mat-error
+              *ngIf="
+                attendantInformationForm.get('fullName').hasError('required')
+              "
+            >
+              Name is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+        <div>
+          <p>------------------------</p>
+          <p>ControlValue: {{yesNoInput.value}}</p>
+          <p>ControlErrors: {{yesNoInput.errors | json}}</p>
+          <p>ControlStatus: {{yesNoInput.status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -1,22 +1,24 @@
 /* Custom email and emialConfirm validator. */
 
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
 
 // FORM GROUP VALIDATORS
-export function matchingEmails(emailControlName: string, confirmEmailControlName: string) {
+export function matchingEmails(): ValidatorFn  {
+
   return (group: FormGroup): { [key: string]: any } => {
-    let emailControl = group.controls[emailControlName];
-    let confirmEmailControl = group.controls[confirmEmailControlName];
+
+    let emailControl = group.controls['email'];
+    let confirmEmailControl = group.controls['emailConfirmation'];
 
     if (emailControl.value !== confirmEmailControl.value) {
       if (confirmEmailControl.errors == null) {
-        confirmEmailControl.setErrors({ mismatchedEmails: true })
+        confirmEmailControl.setErrors({ 'mismatchedEmails': true })
       }
-      return {
-        mismatchedEmails: true
-      };
-    } else if (confirmEmailControl.hasError('mismatchedEmails')) {
-      confirmEmailControl.setErrors(null);
+      return { 'mismatchedEmails': true };
+    } else {
+      return null
     }
+
   }
+
 }

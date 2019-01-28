@@ -133,13 +133,22 @@
         </div>
         <button
           type="submit"
-          [disabled]=" loading "
+          [disabled]=" loading || !attendantInformationForm.valid "
           class="btn"
         >
           PURCHASE
         </button>
-        {{attendantInformationForm | json}}
+        <button type="button" (click)="printFormObject()">print</button>
       </form>
+
+      <div>
+        <div *ngFor="let control of formFields">
+          <p>{{control}}: {{attendantInformationForm.get(control).errors | json}}</p>
+        </div>
+        <p>------------------------</p>
+        <p>FormErrors: {{attendantInformationForm.errors | json}}</p>
+        <p>FormStatus: {{attendantInformationForm.status}}</p>
+      </div>
     </div>
   </div>
 </div>

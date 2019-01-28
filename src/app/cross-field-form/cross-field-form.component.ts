@@ -5,7 +5,6 @@ import {
   ViewContainerRef,
   ElementRef
 } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
 import { AttendantInformation } from './models/attendant-information.model';
 import { FormControl, Validators, FormGroup } from "@angular/forms";
 import { matchingEmails } from "./validators/validators";
@@ -30,11 +29,10 @@ export class CrossFieldFormComponent implements OnInit {
     "",
     ""
   );
+  formFields:string[];
 
 
-  constructor(
-    private snackbar: MatSnackBar
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
 
@@ -48,9 +46,10 @@ export class CrossFieldFormComponent implements OnInit {
           Validators.pattern(EMAIL_REGEX)
         ]),
         emailConfirmation: new FormControl(
-          this.attendantInformation.confirmationEmail,
-          [Validators.required, Validators.pattern(EMAIL_REGEX)]
-        ),
+          this.attendantInformation.confirmationEmail, [
+            Validators.required,
+            Validators.pattern(EMAIL_REGEX)
+          ]),
         idNumber: new FormControl(this.attendantInformation.customerId, [
           Validators.required,
           Validators.pattern(IDNUMBER_REGEX)
@@ -60,11 +59,15 @@ export class CrossFieldFormComponent implements OnInit {
           Validators.pattern(PHONE_REGEX)
         ])
       },
-      matchingEmails("email", "emailConfirmation")
+      matchingEmails()
     );
+
+    this.formFields = Object.keys(this.attendantInformationForm.controls);
   }
 
-
+  printFormObject() {
+    console.log(this.attendantInformationForm);
+  }
 
   onSubmit() {
     if (this.attendantInformationForm) {

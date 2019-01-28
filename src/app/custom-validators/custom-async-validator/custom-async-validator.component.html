@@ -1,0 +1,42 @@
+<div class="purchaseform-container">
+    <div class="right-pane pane">
+      <div class="welcome-text">
+        <h2><strong>Async</strong> custom validator example</h2>
+
+        <p>Pick your github username</p>
+      </div>
+      <div class="form-container">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              name="github-username"
+              matInput
+              placeholder="username"
+              [formControl]="username"
+            />
+            <!-- <mat-error
+              *ngIf="
+                attendantInformationForm.get('fullName').hasError('required')
+              "
+            >
+              Name is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <button
+        type="Button"
+        [disabled]="!username.valid "
+        class="btn"
+        (click)="checkUsername()"
+      >Check</button>
+        <div>
+          <p>------------------------</p>
+          <p>ControlValue: {{username.value}}</p>
+          <p>ControlErrors: {{username.errors | json}}</p>
+          <p>ControlStatus: {{username.status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
