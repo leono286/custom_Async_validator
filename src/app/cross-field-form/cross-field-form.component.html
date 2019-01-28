@@ -11,8 +11,7 @@
         <div>
           <mat-form-field class="full-width">
             <input
-              [(ngModel)]="attendantInformation.customerName"
-              name="fullName"
+            name="fullName"
               matInput
               placeholder="FULL NAME"
               formControlName="fullName"
@@ -30,7 +29,6 @@
         <div>
           <mat-form-field class="full-width">
             <input
-              [(ngModel)]="attendantInformation.email"
               name="email"
               matInput
               placeholder="EMAIL"
@@ -52,7 +50,6 @@
         <div>
           <mat-form-field class="full-width">
             <input
-              [(ngModel)]="attendantInformation.confirmationEmail"
               name="emailConfirmation"
               matInput
               placeholder="EMAIL CONFIRMATION"
@@ -90,7 +87,6 @@
         <div>
           <mat-form-field class="full-width">
             <input
-              [(ngModel)]="attendantInformation.customerId"
               name="idNumber"
               matInput
               placeholder="IDENTIFICATION"
@@ -116,7 +112,6 @@
         <div>
           <mat-form-field class="full-width">
             <input
-              [(ngModel)]="attendantInformation.customerPhoneNumber"
               name="phone"
               type="tel"
               matInput
@@ -138,12 +133,14 @@
         </div>
         <button
           type="submit"
-          [disabled]=" loading || !!checkoutInformation"
+          [disabled]=" loading "
           class="btn"
         >
           PURCHASE
         </button>
+        {{attendantInformationForm | json}}
       </form>
     </div>
   </div>
 </div>
+
