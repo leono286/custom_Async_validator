@@ -65,9 +65,6 @@ export class CrossFieldFormComponent implements OnInit {
     this.formFields = Object.keys(this.attendantInformationForm.controls);
   }
 
-  printFormObject() {
-    console.log(this.attendantInformationForm);
-  }
 
   onSubmit() {
     if (this.attendantInformationForm) {

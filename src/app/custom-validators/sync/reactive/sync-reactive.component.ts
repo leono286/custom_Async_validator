@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { matchYesOrNo } from '../validators/custom-sync-validator';
+import { matchYesOrNo } from '../../validators/yes-no-sync-validator';
 
 @Component({
-  selector: 'app-custom-sync-validator',
-  templateUrl: './custom-sync-validator.component.html',
-  styleUrls: ['./custom-sync-validator.component.css']
+  selector: 'app-sync-reactive',
+  templateUrl: './sync-reactive.component.html',
+  styleUrls: ['./sync-reactive.component.css']
 })
-export class CustomSyncValidatorComponent {
+export class SyncReactiveComponent {
 
   yesNoInput: FormControl;
 
@@ -18,5 +18,4 @@ export class CustomSyncValidatorComponent {
         matchYesOrNo()
       ], );
   }
-
 }

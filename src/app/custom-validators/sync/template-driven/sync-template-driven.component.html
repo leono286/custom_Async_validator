@@ -1,7 +1,8 @@
 <div class="purchaseform-container">
-    <div class="right-pane pane">
-      <div class="welcome-text">
-       <h2><strong>Sync</strong> custom validator example</h2>
+  <div class="right-pane pane">
+    <div class="welcome-text">
+      <h2><strong>Sync</strong> custom validator example</h2>
+      <h2>Template driven forms</h2>
       </div>
       <div class="form-container">
         <div>
@@ -10,7 +11,11 @@
               name="answer"
               matInput
               placeholder="Yes or No"
-              [formControl]="yesNoInput"
+              [(ngModel)]="yesNoInput"
+              #answer = "ngModel"
+              required
+              minlength="2"
+              appYesNoSyncValidator
             />
             <!-- <mat-error
               *ngIf="
@@ -23,9 +28,10 @@
         </div>
         <div>
           <p>------------------------</p>
-          <p>ControlValue: {{yesNoInput.value}}</p>
-          <p>ControlErrors: {{yesNoInput.errors | json}}</p>
-          <p>ControlStatus: {{yesNoInput.status}}</p>
+          <p>ControlValue: {{yesNoInput}}</p>
+          <!-- <p>ControlValue: {{answer}}</p> -->
+          <p>ControlErrors: {{answer.errors | json}}</p>
+          <p>ControlStatus: {{answer.status}}</p>
         </div>
       </div>
     </div>

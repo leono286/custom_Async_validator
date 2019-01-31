@@ -1,7 +1,10 @@
+
+
 <div class="purchaseform-container">
-    <div class="right-pane pane">
-      <div class="welcome-text">
-        <h2><strong>Async</strong> custom validator example</h2>
+  <div class="right-pane pane">
+    <div class="welcome-text">
+      <h2><strong>Async</strong> custom validator example</h2>
+      <h2>Template driven forms</h2>
 
         <p>Pick your github username</p>
       </div>
@@ -12,7 +15,12 @@
               name="github-username"
               matInput
               placeholder="username"
-              [formControl]="username"
+              [(ngModel)]="githubUsername"
+              #username = "ngModel"
+              required
+              minlength="6"
+              appGithubUsernameValidator
+
             />
             <!-- <mat-error
               *ngIf="
@@ -28,12 +36,11 @@
         type="Button"
         [disabled]="!username.valid "
         class="btn"
-        (click)="checkUsername()"
       >Check</button>
         <div>
           <p>------------------------</p>
           <p>ControlValue: {{username.value}}</p>
-          <p>ControlErrors: {{username.errors | json}}</p>
+          <p *ngIf="username?.errors">ControlErrors: {{username.errors | json}}</p>
           <p>ControlStatus: {{username.status}}</p>
         </div>
       </div>
