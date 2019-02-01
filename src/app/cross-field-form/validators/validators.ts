@@ -1,11 +1,11 @@
 /* Custom email and emialConfirm validator. */
 
-import { FormGroup, ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidatorFn, ValidationErrors } from '@angular/forms';
 
-// FORM GROUP VALIDATORS
 export function matchingEmails(): ValidatorFn  {
 
-  return (group: FormGroup): { [key: string]: any } => {
+  return (group: FormGroup): ValidationErrors | null => {
+
 
     let emailControl = group.controls['email'];
     let confirmEmailControl = group.controls['emailConfirmation'];

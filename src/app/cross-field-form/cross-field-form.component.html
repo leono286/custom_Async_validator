@@ -8,7 +8,7 @@
     </div>
     <div class="form-container">
       <form [formGroup]="attendantInformationForm" (ngSubmit)="onSubmit()">
-        <div>
+        <!-- <div>
           <mat-form-field class="full-width">
             <input
             name="fullName"
@@ -24,7 +24,7 @@
               Name is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-        </div>
+        </div> -->
 
         <div>
           <mat-form-field class="full-width">
@@ -84,7 +84,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <div>
+        <!-- <div>
           <mat-form-field class="full-width">
             <input
               name="idNumber"
@@ -130,9 +130,9 @@
               <strong>minimum length is 7</strong>
             </mat-error>
           </mat-form-field>
-        </div>
+        </div> -->
         <button
-          type="submit"
+          type="button"
           [disabled]=" loading || !attendantInformationForm.valid "
           class="btn"
         >
@@ -141,8 +141,9 @@
       </form>
 
       <div>
-        <div *ngFor="let control of formFields">
-          <p>{{control}}: {{attendantInformationForm.get(control).errors | json}}</p>
+        <div>
+          <p>email: {{attendantInformationForm.get('email').errors | json}}</p>
+          <p>emailConfirmation: {{attendantInformationForm.get('emailConfirmation').errors | json}}</p>
         </div>
         <p>------------------------</p>
         <p>FormErrors: {{attendantInformationForm.errors | json}}</p>
