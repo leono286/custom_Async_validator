@@ -28,36 +28,13 @@ export class CrossFieldFormComponent implements OnInit {
 
     this.attendantInformationForm = this.formBuilder.group(
       {
-      email: [
-        '',
-        [Validators.required, Validators.pattern(EMAIL_REGEX)],
-      ],
-      emailConfirmation: [
-        '',
-        [Validators.required, Validators.pattern(EMAIL_REGEX)],
-      ]
-    },
+        email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
+        emailConfirmation: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]]
+      },
       {
         validator: matchingEmails(),
       }
     );
-
-
-
-    //   new FormGroup(
-    //   {
-    //     email: new FormControl('', [
-    //       Validators.required,
-    //       Validators.pattern(EMAIL_REGEX)
-    //     ]),
-    //     emailConfirmation: new FormControl(
-    //       '', [
-    //         Validators.required,
-    //         Validators.pattern(EMAIL_REGEX)
-    //       ]),
-    //   },
-    //   matchingEmails()
-    // );
 
   }
 
