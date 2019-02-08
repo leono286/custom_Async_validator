@@ -1,13 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-  ElementRef
-} from "@angular/core";
-// import { AttendantInformation } from './models/attendant-information.model';
-import { FormControl, Validators, FormGroup, FormBuilder } from "@angular/forms";
-import { matchingEmails } from "./validators/validators";
+import { Component } from "@angular/core";
+import { Validators, FormGroup, FormBuilder } from "@angular/forms";
+import { MatchingEmails } from "./validators/validators";
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -16,26 +9,33 @@ const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
   templateUrl: "./cross-field-form.component.html",
   styleUrls: ["./cross-field-form.component.scss"]
 })
-export class CrossFieldFormComponent implements OnInit {
+export class CrossFieldFormComponent {
 
-  attendantInformationForm: FormGroup;
-  formFields:string[];
+  emailsMatchForm: FormGroup;
+  formFields: string[];
 
 
-  constructor( private formBuilder: FormBuilder) {}
+  constructor(fb: FormBuilder) {
 
-  ngOnInit(): void {
+    let commonValidators = [
+      Validators.required,
+      Validators.pattern(EMAIL_REGEX)
+    ];
 
-    this.attendantInformationForm = this.formBuilder.group(
-      {
-        email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
-        emailConfirmation: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]]
-      },
-      {
-        validator: matchingEmails(),
-      }
-    );
+    let controlsConfig = {
+      email: ['', commonValidators],
+      emailConfirmation: ['', commonValidators]
+    }
+
+    let optionsConfig = {
+      validator: MatchingEmails,
+    };
+
+    this.emailsMatchForm = 
+      fb.group(
+        controlsConfig,
+        optionsConfig
+      );
 
   }
-
 }

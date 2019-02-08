@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { matchYesOrNo } from '../../validators/yes-no-sync-validator';
+import { MatchYesOrNo } from '../../validators/yes-no-sync-validator';
 
 @Component({
   selector: 'app-sync-reactive',
@@ -11,11 +11,15 @@ export class SyncReactiveComponent {
 
   yesNoInput: FormControl;
 
-  constructor(private fb: FormBuilder) {
-    this.yesNoInput = fb.control('', [
-        Validators.required,
-        Validators.minLength(2),
-        matchYesOrNo()
-      ], );
+  constructor(fb: FormBuilder) {
+
+    let validators = [
+      Validators.required,
+      Validators.minLength(2),
+      MatchYesOrNo
+    ];
+
+    this.yesNoInput =
+      fb.control('', validators,);
   }
 }

@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { AsyncValidator, FormControl, ValidationErrors, NG_ASYNC_VALIDATORS } from '@angular/forms';
+import { NG_ASYNC_VALIDATORS, AsyncValidator, FormControl, ValidationErrors } from '@angular/forms';
 import { UniqueUsername } from '../validators/github-username-async-validator';
 import { Observable } from 'rxjs';
 

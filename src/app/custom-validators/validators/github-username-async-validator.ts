@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ValidationErrors, AsyncValidator, FormControl } from "@angular/forms";
 import { Observable, timer } from "rxjs";
-import { catchError, map, debounceTime, take, switchMap } from "rxjs/operators";
+import { map, switchMap } from "rxjs/operators";
 import { GithubHelperService } from "../../services/github-helper.service";
 
 @Injectable({ providedIn: 'root' })

@@ -4,7 +4,7 @@
       <p>Quite welcome to this awesome form<br />Please fill your information in the required fields.</p>
     </div>
     <div class="form-container">
-      <form [formGroup]="attendantInformationForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="emailsMatchForm" (ngSubmit)="onSubmit()">
 
         <div>
           <mat-form-field class="full-width">
@@ -14,16 +14,16 @@
               placeholder="EMAIL"
               formControlName="email"
             />
-            <mat-error
-              *ngIf="attendantInformationForm.get('email').hasError('required')"
+            <!-- <mat-error
+              *ngIf="emailsMatchForm.get('email').hasError('required')"
             >
               Email address is <strong>required</strong>
             </mat-error>
             <mat-error
-              *ngIf="attendantInformationForm.get('email').hasError('pattern')"
+              *ngIf="emailsMatchForm.get('email').hasError('pattern')"
             >
               Please enter a valid email address
-            </mat-error>
+            </mat-error> -->
           </mat-form-field>
         </div>
 
@@ -35,9 +35,9 @@
               placeholder="EMAIL CONFIRMATION"
               formControlName="emailConfirmation"
             />
-            <mat-error
+            <!-- <mat-error
               *ngIf="
-                attendantInformationForm
+                emailsMatchForm
                   .get('emailConfirmation')
                   .hasError('required')
               "
@@ -46,7 +46,7 @@
             </mat-error>
             <mat-error
               *ngIf="
-                attendantInformationForm
+                emailsMatchForm
                   .get('emailConfirmation')
                   .hasError('pattern')
               "
@@ -55,19 +55,19 @@
             </mat-error>
             <mat-error
               *ngIf="
-                attendantInformationForm
+                emailsMatchForm
                   .get('emailConfirmation')
                   .hasError('mismatchedEmails')
               "
             >
               Email addresses <strong>must match</strong>
-            </mat-error>
+            </mat-error> -->
           </mat-form-field>
         </div>
 
         <button
           type="button"
-          [disabled]=" !attendantInformationForm.valid "
+          [disabled]=" !emailsMatchForm.valid "
           class="btn"
         >
           Send
@@ -76,12 +76,12 @@
 
       <div>
         <div>
-          <p>email: {{attendantInformationForm.get('email').errors | json}}</p>
-          <p>emailConfirmation: {{attendantInformationForm.get('emailConfirmation').errors | json}}</p>
+          <p>email: {{emailsMatchForm.get('email').errors | json}}</p>
+          <p>emailConfirmation: {{emailsMatchForm.get('emailConfirmation').errors | json}}</p>
         </div>
         <p>------------------------</p>
-        <p>FormErrors: {{attendantInformationForm.errors | json}}</p>
-        <p>FormStatus: {{attendantInformationForm.status}}</p>
+        <p>FormErrors: {{emailsMatchForm.errors | json}}</p>
+        <p>FormStatus: {{emailsMatchForm.status}}</p>
       </div>
     </div>
   </div>

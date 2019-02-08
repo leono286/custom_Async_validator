@@ -5,13 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sync-template-driven.component.html',
   styleUrls: ['./sync-template-driven.component.css']
 })
-export class SyncTemplateDrivenComponent implements OnInit {
+export class SyncTemplateDrivenComponent {
 
   yesNoInput: string;
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }
+
+
+

@@ -2,9 +2,9 @@
 
 import { FormGroup, ValidatorFn, ValidationErrors } from '@angular/forms';
 
-export function matchingEmails(): ValidatorFn  {
+export const MatchingEmails: ValidatorFn =
 
-  return (group: FormGroup): ValidationErrors | null => {
+  (group: FormGroup): ValidationErrors | null => {
 
 
     let emailControl = group.controls['email'];
@@ -16,9 +16,11 @@ export function matchingEmails(): ValidatorFn  {
       }
       return { 'mismatchedEmails': true };
     } else {
+      if( confirmEmailControl.hasError('mismatchedEmails') ){
+        confirmEmailControl.updateValueAndValidity();
+      }
       return null
     }
 
   }
 
-}
