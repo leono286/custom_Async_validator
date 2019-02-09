@@ -1,0 +1,59 @@
+<div class="form-container">
+  <div class="welcome-text">
+    <h2>
+      <strong>Sync</strong> custom validator example <br />
+      <span class="small">(Template driven forms)</span>
+    </h2>
+  </div>
+  <div class="pane">
+    <div class="form-wrapper">
+      <div class="form-asistant">
+        <div class="image-wrapper">
+          <img *ngIf="nice(answer)" src="assets/img/nice.jpeg" alt="" />
+          <img *ngIf="amazed(answer)" src="assets/img/amazed.jpeg" alt="" />
+          <img *ngIf="sarcastic(answer)" src="assets/img/sarcastic.jpeg" alt="" />
+          <img *ngIf="angry(answer)" src="assets/img/angry.jpeg" alt="" />
+          <img *ngIf="frowning(answer)" src="assets/img/frowning.jpeg" alt="" />
+          <img *ngIf="happy(answer)" src="assets/img/happy.jpeg" alt="" />
+        </div>
+        <div class="text-bubble">
+          <img src="assets/img/text-globe.png" alt="" />
+          <div class="message">
+            <span *ngIf="nice(answer)">Please fill in the form</span>
+            <span *ngIf="amazed(answer)">Doing well</span>
+            <span *ngIf="sarcastic(answer)">C'mon is not that hard</span>
+            <span *ngIf="angry(answer)">Yes or No!!</span>
+            <span *ngIf="frowning(answer)">R U kidding me?</span>
+            <span *ngIf="happy(answer)">Yaaay!!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              name="answer"
+              matInput
+              placeholder="Yes or No"
+              [(ngModel)]="yesNoInput"
+              #answer="ngModel"
+              required
+              minlength="2"
+              appYesNoSyncValidator
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-peek">
+      <div>
+        <pre>ControlErrors: {{ answer.errors | json }}</pre>
+      </div>
+      <div class="overall-status">
+        <pre>ControlStatus: {{ answer.status }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

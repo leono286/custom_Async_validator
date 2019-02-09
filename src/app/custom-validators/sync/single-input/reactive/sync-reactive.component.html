@@ -1,0 +1,54 @@
+<div class="form-container">
+  <div class="welcome-text">
+    <h2>
+      <strong>Sync</strong> custom validator example <br />
+      <span class="small">(Reactive forms)</span>
+    </h2>
+  </div>
+  <div class="pane">
+    <div class="form-wrapper">
+      <div class="form-asistant">
+        <div class="image-wrapper">
+          <img *ngIf="nice" src="assets/img/nice.jpeg" alt="" />
+          <img *ngIf="amazed" src="assets/img/amazed.jpeg" alt="" />
+          <img *ngIf="sarcastic" src="assets/img/sarcastic.jpeg" alt="" />
+          <img *ngIf="angry" src="assets/img/angry.jpeg" alt="" />
+          <img *ngIf="frowning" src="assets/img/frowning.jpeg" alt="" />
+          <img *ngIf="happy" src="assets/img/happy.jpeg" alt="" />
+        </div>
+        <div class="text-bubble">
+          <img src="assets/img/text-globe.png" alt="" />
+          <div class="message">
+            <span *ngIf="nice">Please fill in the form</span>
+            <span *ngIf="amazed">Doing well</span>
+            <span *ngIf="sarcastic">C'mon is not that hard</span>
+            <span *ngIf="angry">Yes or No!!</span>
+            <span *ngIf="frowning">R U kidding me?</span>
+            <span *ngIf="happy">Yaaay!!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              name="answer"
+              matInput
+              placeholder="Yes or No"
+              [formControl]="yesNoInput"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="status-peek">
+      <div>
+        <pre>ControlErrors: {{ yesNoInput.errors | json }}</pre>
+      </div>
+      <div class="overall-status">
+        <pre>ControlStatus: {{ yesNoInput.status }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

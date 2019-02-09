@@ -1,245 +1,177 @@
+
+
+$body-bg-color: #2C2B30;
+$pf-rightpane-bg: #FFC30F;
+$pf-text-color: #581845;
+$image-border-color: #FF5733;
+$pf-input-color: #7d8994;
+
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
 
+.form-container {
+  margin: 0 auto;
 
+  .welcome-text {
+    line-height: 1.6em;
+    font-size: 30px;
+    letter-spacing: 0.06em;
+    word-spacing: 0.09em;
+    color: $pf-text-color;
+    text-align: center;
 
-/* Purchase form color variables */
+    h2 {
+      font-weight: normal;
+      .small {
+        font-size: 0.8em;
+      }
+    }
+    strong {
+      color: $pf-text-color;
+      font-size: 1.1em;
+    }
+  }
 
-$pf-rightpane-bg: #f1f1f1;
-$pf-mobile-logo-underline-color: #5e91a9;
-$pf-text-color: #1d2e3e;
-$pf-input-color: #7d8994;
-$pf-focused-input-color: #ffffff;
-$pf-selected-items-outline-color: #5e91a9;
-$pf-selected-items-text-color: #ffffff;
-$pf-selected-items-value-color: #5e91a9;
-$pf-submit-button-bg: #1d2e3e;
-$pf-error-text-color: #a9389d;
+  .pane {
 
-.purchaseform-container{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: inline-flex;
-
-  .pane{
     display: flex;
-    flex: 50%;
     vertical-align: top;
     height: 100%;
-  }
-  .right-pane{
-    background-color: $pf-rightpane-bg;
     box-sizing: border-box;
-    padding: 6%;
     padding-top: 3%;
     color: $pf-text-color;
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    overflow-y: auto;
     justify-content: center;
+    height: 100%;
 
-    div {
-      width: 100%;
+    > div {
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+      margin:10px 20px;
     }
 
-    .purchase-item {
+    .form-wrapper {
+      padding: 30px 60px;
+      flex: 1;
+      background-color: $pf-rightpane-bg;
+      max-width:600px;
+    }
 
-      .item-wrapper {
-        border: 1px solid $pf-selected-items-outline-color;
-        width: 80%;
-        min-width: 235px;
-        max-width: 400px;
-        margin: 5px 0;
-        display: inline-block;
-        padding: 9px 8px 6px;
-        box-sizing: border-box;
-        font-weight: bold;
-        letter-spacing: 0.03em;
+    .form-asistant {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      margin: 20px 0;
+
+      .image-wrapper {
+        flex: 0 0 50%;
+        img {
+          border-radius: 100%;
+          border: 4px solid $image-border-color;
+          max-width: 100%;
+        }
+      }
+
+      .text-bubble {
         position: relative;
-        line-height: 1em;
+        width: 100%;
+        flex: 1;
 
-        > div {
-          display: inline-block;
-          width: auto;
-          line-height: 1em;
-
-          &.item-value {
-            position: absolute;
-            right: 9px;
-            top: 4px;
-            font-size: 1.5em;
-            font-weight: normal;
-            color: $pf-selected-items-value-color;
-          }
-        }
-      }
-
-      .remove-item {
-        color: $pf-selected-items-outline-color;
-        font-size: 1.3em;
-        margin-left: 5px;
-        display: inline-block;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        i {
-          color: $pf-selected-items-outline-color;
-        }
-      }
-    }
-
-    .purchase-total {
-      width: 80%;
-      min-width: 235px;
-      max-width: 400px;
-      margin: 5px 0 15px;
-      display: inline-block;
-      padding: 9px 8px 6px;
-      box-sizing: border-box;
-      font-weight: bold;
-      letter-spacing: 0.03em;
-      position: relative;
-      line-height: 1em;
-
-      > div {
-        display: inline-block;
-        width: auto;
-        line-height: 1em;
-        margin-left: 2px;
-        font-size: 1.5em;
-        font-weight: normal;
-
-        &.item-value {
+        img {
           position: absolute;
-          right: 5px;
-          top: 6px;
-          font-size: 1.8em;
-          font-weight: normal;
+          left: -13px;
+          top: 0;
+          width: 105%;
+        }
+
+        .message {
+          position: absolute;
+          top: 2%;
+          left: 3.5%;
+          right: 0;
+          bottom: 0;
+          height: 64%;
+          width: 94%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 29px;
+          padding: 15px 19px;
+          text-align: center;
         }
       }
+
+
     }
 
-    .welcome-text{
-      line-height: 1.2em;
-      font-size: 20px;
-      letter-spacing: 0.06em;
-      word-spacing: 0.09em;
+
+
+    .form-container {
       margin-top: 30px;
-
-      h2 {
-        font-weight: normal;
-      }
-
-      strong {
-        color: $pf-text-color;
-        font-size: 1.1em;
-      }
-    }
-
-    .form-container{
-      margin-top: 30px;
+      font-size: 30px;
+      color: $pf-text-color;
 
       .mat-form-field {
         margin: 12px auto;
-        .mat-error {
-          color: $pf-error-text-color;
-          font-size: 15px;
-          letter-spacing: 0.04em;
 
-          strong {
-            color: $pf-error-text-color;
-          }
+        .mat-form-field-wrapper {
+          border: 3px solid $pf-text-color;
+          padding: 5px 20px 8px;
+          border-radius: 15px;
         }
+
         .mat-form-field-placeholder {
           color: $pf-input-color;
           letter-spacing: 0.07em;
           word-spacing: 0.2em;
           font-size: 17px;
         }
-        .mat-form-field-underline, .mat-form-field-ripple {
-          background-color: $pf-input-color;
-        }
-        &.mat-focused .mat-form-field-placeholder {
-          color: $pf-focused-input-color;
-        }
-        &.mat-focused .mat-form-field-underline, &.mat-focused .mat-form-field-ripple {
-          background-color: $pf-focused-input-color;
-        }
-      }
-      // button[type="submit"] {
-      button {
-        background: none;
-        background-color: $pf-submit-button-bg;
-        border: 0;
-        padding: 14px 24px;
-        border-radius: 20px;
-        font-weight: bold;
-        color: #FFF;
-        float: right;
-        margin-top: 27px;
-        margin-right: 15px;
-        letter-spacing: 0.05em;
-        box-shadow: 2px 3px 21px 0px rgba(0,0,0,0.65);
-        display: block;
-        opacity: 1;
-        transition: all 0.6s;
 
-        &:hover {
-          cursor: pointer;
-          box-shadow: none;
-          transform: translateX(-1px);
-          transition: box-shadow 0.4s, transform 0.4s;
+        .mat-form-field-appearance-legacy .mat-form-field-label {
+          color: $pf-text-color;
         }
-        &[disabled] {
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-        &:focus {
-          outline:0;
-        }
-      }
 
-      .captcha {
-        margin-top: 20px;
-
-        &.not-visible {
+        .mat-form-field-underline,
+        .mat-form-field-ripple {
           display: none;
         }
       }
+    }
 
+    .status-peek {
+      font-size: 35px;
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      background-color: $pf-text-color;
+      color: #FFF;
+      padding: 30px;
+      flex-direction: column;
+      line-height: 1.7em;
+      max-width: 800px;
+
+      .overall-status {
+        font-size: 1.2em;
+      }
     }
 
     .full-width {
       width: 100%;
-
       input {
         width: 100%;
       }
     }
-    .mobile-logo {
-      display: none;
-
-      @media (max-width: 768px) {
-        display: block;
-        text-align: center;
-        width: 100%;
-        margin: 0 auto 20px;
-        border-bottom: 1px solid $pf-mobile-logo-underline-color;
-      }
-
-      img {
-        height: 65px;
-      }
-    }
-}
-
+  }
 }
