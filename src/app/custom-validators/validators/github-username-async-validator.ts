@@ -9,16 +9,16 @@ export class UniqueUsername implements AsyncValidator {
 
   constructor(private githubService: GithubHelperService) {}
 
-  validate(
-    inputControl: FormControl
-  ): Observable<ValidationErrors | null> {
+  validate( inputControl: FormControl ): Observable<ValidationErrors | null> {
 
     return timer(500).pipe(
       switchMap(() => {
-        let currentUsername: string = inputControl.value;
-        return this.githubService.checkGithubUsername(currentUsername).pipe(
+        const currentUsername: string = inputControl.value;
+        return this.githubService.getGithubInfoByUsername(currentUsername).pipe(
           map((data: any) => {
-            let usernameTaken = data.items.filter((item) => item.login === currentUsername).length !== 0;
+            const usernameTaken = data.items.filter(
+              (item) => item.login === currentUsername
+            ).length !== 0;
             return usernameTaken ? { UniqueUsername: true, Message: 'Username already taken' } : null
           }),
         );

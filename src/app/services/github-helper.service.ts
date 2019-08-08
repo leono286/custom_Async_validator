@@ -11,7 +11,7 @@ export class GithubHelperService {
 
   constructor(private http: HttpClient) { }
 
-  checkGithubUsername(username: string):any {
+  getGithubInfoByUsername(username: string):any {
     let customUrl = this.githubUsernameCheckUrl + username;
     return this.http.get(customUrl);
   }

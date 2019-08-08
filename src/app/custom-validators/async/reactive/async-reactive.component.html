@@ -1,3 +1,72 @@
+<div class="form-container">
+  <div class="welcome-text">
+    <h2>
+      <strong>Async</strong> custom validator example <br />
+      <span class="small">(Reactive forms)</span>
+    </h2>
+  </div>
+  <div class="pane">
+    <div class="form-wrapper">
+      <div class="form-asistant">
+        <div class="image-wrapper">
+          <img src="assets/img/nice.jpeg" alt="" />
+        </div>
+        <div class="text-bubble">
+          <img src="assets/img/text-globe.png" alt="" />
+          <div class="message">
+            <span>Please fill in the form</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-container">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              name="github-username"
+              matInput
+              placeholder="username"
+              [formControl]="username"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="status-peek">
+      <div>
+        <pre>ControlErrors: {{ username.errors | json }}</pre>
+      </div>
+      <div class="overall-status">
+        <pre>ControlStatus: {{ username.status }}</pre>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div>
+
+
+      <div class="form-container">
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              name="answer"
+              matInput
+              placeholder="Yes or No"
+              [formControl]="yesNoInput"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="status-peek">
+      <div>
+        <pre>ControlErrors: {{ yesNoInput.errors | json }}</pre>
+      </div>
+      <div class="overall-status">
+        <pre>ControlStatus: {{ yesNoInput.status }}</pre>
+      </div>
+    </div>
+
+
 <div class="purchaseform-container">
   <div class="right-pane pane">
     <div class="welcome-text">
@@ -13,23 +82,17 @@
             matInput
             placeholder="username"
             [formControl]="username"
-          />
-          <!-- <mat-error
+          /> -->
+<!-- <mat-error
             *ngIf="
               attendantInformationForm.get('fullName').hasError('required')
             "
           >
             Name is <strong>required</strong>
           </mat-error> -->
-        </mat-form-field>
+<!-- </mat-form-field>
       </div>
 
-      <button
-      type="Button"
-      [disabled]="!username.valid "
-      class="btn"
-      (click)="checkUsername()"
-    >Check</button>
       <div>
         <p>------------------------</p>
         <p>ControlValue: {{username.value}}</p>
@@ -39,4 +102,4 @@
     </div>
   </div>
 </div>
-
+ -->

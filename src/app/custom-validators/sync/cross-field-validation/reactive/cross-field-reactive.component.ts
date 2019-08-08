@@ -51,7 +51,7 @@ export class CrossFieldFormReactiveComponent {
 
   get frowning(): boolean {
     return this.emailsMatchForm.controls['email'].invalid && this.emailsMatchForm.controls['email'].value.length === 0 && this.emailsMatchForm.controls['email'].dirty && this.emailsMatchForm.controls['emailConfirmation'].invalid && this.emailsMatchForm.controls['emailConfirmation'].value.length === 0 && this.emailsMatchForm.controls['emailConfirmation'].dirty
-    )
+
   }
 
   get angry(): boolean {
