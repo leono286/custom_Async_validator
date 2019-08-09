@@ -13,17 +13,18 @@ export class UniqueUsername implements AsyncValidator {
 
     return timer(500).pipe(
       switchMap(() => {
-        const currentUsername: string = inputControl.value;
-        return this.githubService.getGithubInfoByUsername(currentUsername).pipe(
-          map((data: any) => {
-            const usernameTaken = data.items.filter(
-              (item) => item.login === currentUsername
-            ).length !== 0;
-            return usernameTaken ? { UniqueUsername: true, Message: 'Username already taken' } : null
-          }),
+        const currentUsername = inputControl.value;
+        return this.githubService
+          .getGithubInfoByUsername(currentUsername)
+          .pipe(
+            map((data: any) => {
+              const usernameTaken = data.items.filter(
+                (item) => item.login === currentUsername
+              ).length !== 0;
+              return usernameTaken ? { UniqueUsername: true, Message: 'Username already taken' } : null
+            }),
         );
       }),
     );
-
   }
 }

@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
 
 import { SyncReactiveComponent } from './custom-validators/sync/single-input/reactive/sync-reactive.component';
 import { SyncTemplateDrivenComponent } from './custom-validators/sync/single-input/template-driven/sync-template-driven.component';
@@ -38,6 +38,7 @@ import { MatchingEmailsValidatorDirective } from './custom-validators/directives
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

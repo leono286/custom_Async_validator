@@ -13,13 +13,13 @@ export class AsyncReactiveComponent {
   username: FormControl;
   existentUser: any = {};
   usernameAvailable: boolean;
+  showRequiredError = false;
 
   constructor(
     private fb: FormBuilder,
     private usernameValidator: UniqueUsername,
     private githubService: GithubHelperService
   ){
-
     this.username = fb.control('', [
       Validators.required,
       Validators.minLength(6),
@@ -28,5 +28,27 @@ export class AsyncReactiveComponent {
         (control: FormControl) => this.usernameValidator.validate(control),
       ]);
 
+  }
+
+  checkRequiredError(): void {
+    console.log(this.username.value.length);
+
+    this.showRequiredError = this.username.value.length === 0;
+  }
+
+  get warningStateWrongLength(): boolean {
+    return !this.username.pristine && this.username.hasError('minlength') && !this.showRequiredError;
+  }
+
+  get processingState(): boolean {
+    return !this.username.errors && this.username.pending ;
+  }
+
+  get usernameTakenState(): boolean {
+    return this.username.hasError('UniqueUsername') ;
+  }
+
+  get validState(): boolean {
+    return this.username.valid ;
   }
 }

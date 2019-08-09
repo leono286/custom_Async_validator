@@ -1,10 +1,25 @@
 
 
-$body-bg-color: #2C2B30;
-$pf-rightpane-bg: #FFC30F;
+$pf-left-pane-bg: #FEE5E9;
 $pf-text-color: #581845;
-$image-border-color: #FF5733;
 $pf-input-color: #7d8994;
+$pf-right-pane-bg: #581845;
+$info-bg-color: #EDCBD0;
+
+$warning-bg-color: #FD576E;
+$warning-fg-color: #ffffff;
+
+$usernameTaken-bg-color: #940014;
+$usernameTaken-fg-color: #ffffff;
+
+$processing-bg-color: #51207A;
+$processing-fg-color: #ffffff;
+
+$valid-bg-color: #601048;
+$valid-fg-color: #ffffff;
+
+$icon-size: 84px;
+$icon-circle-size: 140px;
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -46,7 +61,6 @@ body {
   }
 
   .pane {
-
     display: flex;
     vertical-align: top;
     height: 100%;
@@ -65,7 +79,7 @@ body {
     .form-wrapper {
       padding: 30px 60px;
       flex: 1;
-      background-color: $pf-rightpane-bg;
+      background-color: $pf-left-pane-bg;
       max-width:600px;
     }
 
@@ -75,44 +89,68 @@ body {
       align-items: stretch;
       margin: 20px 0;
 
+      .image-wrapper,
+        .text-box {
+          transition: background-color 250ms ease-out, color 250ms ease-out;
+        }
+
       .image-wrapper {
-        flex: 0 0 50%;
-        img {
-          border-radius: 100%;
-          border: 4px solid $image-border-color;
-          max-width: 100%;
+        flex: 0 0 $icon-circle-size;
+        height: $icon-circle-size;
+        border-radius: $icon-circle-size;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $info-bg-color;
+        mat-icon {
+          font-size: $icon-size;
+          width: $icon-size;
+          height: $icon-size;
+          line-height: $icon-size;
         }
       }
 
-      .text-bubble {
-        position: relative;
-        width: 100%;
+      .text-box {
         flex: 1;
+        padding: 20px;
+        border-radius: 8px;
+        align-items: center;
+        font-size: 1.8em;
+        background-color: $info-bg-color;
+        margin: 10px 10px 10px 20px;
+      }
 
-        img {
-          position: absolute;
-          left: -13px;
-          top: 0;
-          width: 105%;
-        }
-
-        .message {
-          position: absolute;
-          top: 2%;
-          left: 3.5%;
-          right: 0;
-          bottom: 0;
-          height: 64%;
-          width: 94%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 29px;
-          padding: 15px 19px;
-          text-align: center;
+      &.warning {
+        .image-wrapper,
+        .text-box {
+          background-color: $warning-bg-color;
+          color: $warning-fg-color;
         }
       }
 
+      &.processing {
+        .image-wrapper,
+        .text-box {
+          background-color: $processing-bg-color;
+          color: $processing-fg-color;
+        }
+      }
+
+      &.valid {
+        .image-wrapper,
+        .text-box {
+          background-color: $valid-bg-color;
+          color: $valid-fg-color;
+        }
+      }
+
+      &.usernameTaken {
+        .image-wrapper,
+        .text-box {
+          background-color: $usernameTaken-bg-color;
+          color: $usernameTaken-fg-color;
+        }
+      }
 
     }
 
@@ -127,7 +165,7 @@ body {
         margin: 12px auto;
 
         .mat-form-field-wrapper {
-          border: 3px solid $pf-text-color;
+          border: 2px solid $pf-text-color;
           padding: 5px 20px 8px;
           border-radius: 15px;
         }
@@ -155,7 +193,7 @@ body {
       display: flex;
       justify-content: flex-start;
       align-content: center;
-      background-color: $pf-text-color;
+      background-color: $pf-right-pane-bg;
       color: #FFF;
       padding: 30px;
       flex-direction: column;
@@ -173,5 +211,33 @@ body {
         width: 100%;
       }
     }
+  }
+}
+
+
+.rotate {
+  animation: spin 4s linear infinite;
+}
+
+.zoom-in-out {
+  animation: zoominout 1s linear ;
+}
+
+@keyframes spin {
+  100% {
+  -webkit-transform: rotate(360deg);
+   transform:rotate(360deg);
+  }
+}
+
+@keyframes zoominout {
+  0% {
+      transform: scale(1,1);
+  }
+  50% {
+      transform: scale(1.1,1.1);
+  }
+  100% {
+      transform: scale(1,1);
   }
 }

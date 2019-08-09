@@ -7,14 +7,28 @@
   </div>
   <div class="pane">
     <div class="form-wrapper">
-      <div class="form-asistant">
+      <div class="form-asistant"
+      [ngClass]="{
+        'warning': warningStateWrongLength || showRequiredError,
+        'valid': validState,
+        'usernameTaken': usernameTakenState,
+        'processing': processingState
+      }">
         <div class="image-wrapper">
-          <img src="assets/img/nice.jpeg" alt="" />
+          <mat-icon *ngIf="username.pristine">face</mat-icon>
+          <mat-icon class="zoom-in-out" *ngIf="showRequiredError || warningStateWrongLength">error</mat-icon>
+          <mat-icon class="rotate" *ngIf="processingState">settings</mat-icon>
+          <mat-icon class="zoom-in-out" *ngIf="usernameTakenState">sentiment_very_dissatisfied</mat-icon>
+          <mat-icon class="zoom-in-out" *ngIf="validState">sentiment_very_satisfied</mat-icon>
         </div>
-        <div class="text-bubble">
-          <img src="assets/img/text-globe.png" alt="" />
+        <div class="text-box">
           <div class="message">
-            <span>Please fill in the form</span>
+            <span *ngIf="username.pristine">Type in your desired github username</span>
+            <span *ngIf="showRequiredError">Input is required</span>
+            <span *ngIf="warningStateWrongLength">Text must have at least 6 characters</span>
+            <span *ngIf="processingState">Verifying if username is available</span>
+            <span *ngIf="validState">Yayy!! Username is availabe</span>
+            <span *ngIf="usernameTakenState">Sorry!! User name is not availabe</span>
           </div>
         </div>
       </div>
@@ -26,6 +40,7 @@
               matInput
               placeholder="username"
               [formControl]="username"
+              (keyup)="checkRequiredError()"
             />
           </mat-form-field>
         </div>
@@ -41,6 +56,7 @@
     </div>
   </div>
 </div>
+
 <!-- </div>
 
 
