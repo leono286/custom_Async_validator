@@ -1,49 +1,62 @@
-
-
-<div class="purchaseform-container">
-  <div class="right-pane pane">
-    <div class="welcome-text">
-      <h2><strong>Async</strong> custom validator example</h2>
-      <h2>Template driven forms</h2>
-
-        <p>Pick your github username</p>
-      </div>
+<div class="form-container">
+  <div class="welcome-text">
+    <h2>
+      <strong>Async</strong> custom validator example <br />
+      <span class="small">(Template Driven forms)</span>
+    </h2>
+  </div>
+  <div class="pane">
+    <div class="form-wrapper">
       <div class="form-container">
         <div>
           <mat-form-field class="full-width">
             <input
-              name="github-username"
-              matInput
-              placeholder="username"
-              [(ngModel)]="githubUsername"
-              #username = "ngModel"
-              required
-              minlength="6"
-              appGithubUsernameValidator
-
+            name="username"
+            matInput
+            placeholder="username"
+            [(ngModel)]="username"
+            (keyup)="checkRequiredError()"
+            #usernameRef = "ngModel"
+            required
+            minlength="6"
+            appGithubUsernameValidator
             />
-            <!-- <mat-error
-              *ngIf="
-                attendantInformationForm.get('fullName').hasError('required')
-              "
-            >
-              Name is <strong>required</strong>
-            </mat-error> -->
           </mat-form-field>
         </div>
-
-        <button
-        type="Button"
-        [disabled]="!username.valid "
-        class="btn"
-      >Check</button>
-        <div>
-          <p>------------------------</p>
-          <p>ControlValue: {{username.value}}</p>
-          <p *ngIf="username?.errors">ControlErrors: {{username.errors | json}}</p>
-          <p>ControlStatus: {{username.status}}</p>
+      </div>
+      <div class="form-asistant"
+      [ngClass]="{
+        'warning': (!usernameRef.pristine && usernameRef.hasError('minlength') && !showRequiredError) || showRequiredError,
+        'valid': usernameRef.valid,
+        'usernameTaken': usernameRef.hasError('UniqueUsername'),
+        'processing': !usernameRef.errors && usernameRef.pending
+      }">
+        <div class="image-wrapper">
+          <mat-icon *ngIf="(username.length === 0) && !showRequiredError">face</mat-icon>
+          <mat-icon class="zoom-in-out" *ngIf="showRequiredError || (!usernameRef.pristine && usernameRef.hasError('minlength') && !showRequiredError)">error</mat-icon>
+          <mat-icon class="rotate" *ngIf="!usernameRef.errors && usernameRef.pending">settings</mat-icon>
+          <mat-icon class="zoom-in-out" *ngIf="usernameRef.hasError('UniqueUsername')">sentiment_very_dissatisfied</mat-icon>
+          <mat-icon class="zoom-in-out" *ngIf="usernameRef.valid">sentiment_very_satisfied</mat-icon>
+        </div>
+        <div class="text-box">
+          <div class="message">
+            <span *ngIf="(username.length === 0) && !showRequiredError">Type in your desired github username</span>
+            <span *ngIf="showRequiredError">Input is required</span>
+            <span *ngIf="(!usernameRef.pristine && usernameRef.hasError('minlength') && !showRequiredError)">Text must have at least 6 characters</span>
+            <span *ngIf="!usernameRef.errors && usernameRef.pending">Verifying if username is available</span>
+            <span *ngIf="usernameRef.valid">Yayy!! Username is availabe</span>
+            <span *ngIf="usernameRef.hasError('UniqueUsername')">Sorry!! User name is not availabe</span>
+          </div>
         </div>
       </div>
     </div>
+    <div class="status-peek">
+      <div>
+        <pre>ControlErrors: {{ usernameRef.errors | json }}</pre>
+      </div>
+      <div class="overall-status">
+        <pre>ControlStatus: {{ usernameRef.status }}</pre>
+      </div>
+    </div>
   </div>
-
+</div>

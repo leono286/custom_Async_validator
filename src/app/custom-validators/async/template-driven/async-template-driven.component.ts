@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-async-template-driven',
   templateUrl: './async-template-driven.component.html',
   styleUrls: ['./async-template-driven.component.css']
 })
-export class AsyncTemplateDrivenComponent implements OnInit {
+export class AsyncTemplateDrivenComponent {
 
-  githubUsername: string;
+  username = '';
+  showRequiredError = false;
 
   constructor() { }
 
-  ngOnInit() {
+  checkRequiredError(): void {
+    this.showRequiredError = this.username.length === 0;
   }
 
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cross-field-validation": {
+    "custom-Async-validator": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cross-field-validation",
+            "outputPath": "dist/custom_Async_validator",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -51,18 +51,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cross-field-validation:build"
+            "browserTarget": "custom_Async_validator:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cross-field-validation:build:production"
+              "browserTarget": "custom_Async_validator:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cross-field-validation:build"
+            "browserTarget": "custom_Async_validator:build"
           }
         },
         "test": {
@@ -97,7 +97,7 @@
         }
       }
     },
-    "cross-field-validation-e2e": {
+    "custom_Async_validator-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -105,11 +105,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cross-field-validation:serve"
+            "devServerTarget": "custom_Async_validator:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cross-field-validation:serve:production"
+              "devServerTarget": "custom_Async_validator:serve:production"
             }
           }
         },
@@ -125,5 +125,5 @@
       }
     }
   },
-  "defaultProject": "cross-field-validation"
+  "defaultProject": "custom_Async_validator"
 }

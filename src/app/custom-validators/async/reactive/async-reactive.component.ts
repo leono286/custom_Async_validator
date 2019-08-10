@@ -11,8 +11,6 @@ import { UniqueUsername } from '../../validators/github-username-async-validator
 export class AsyncReactiveComponent {
 
   username: FormControl;
-  existentUser: any = {};
-  usernameAvailable: boolean;
   showRequiredError = false;
 
   constructor(
@@ -31,8 +29,6 @@ export class AsyncReactiveComponent {
   }
 
   checkRequiredError(): void {
-    console.log(this.username.value.length);
-
     this.showRequiredError = this.username.value.length === 0;
   }
 
